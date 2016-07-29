@@ -740,6 +740,14 @@ fi
 %{_libdir}/*.la
 
 %changelog
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
 * Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-1
 - new package built with tito
 
