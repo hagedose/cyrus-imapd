@@ -36,7 +36,7 @@
 Name:               cyrus-imapd
 Summary:            A high-performance mail server with IMAP, POP3, NNTP and SIEVE support
 Version:            %{real_version}
-Release:            1%{?dist}
+Release:            2%{?dist}
 License:            BSD
 Group:              System Environment/Daemons
 URL:                http://www.cyrusimap.org
@@ -740,6 +740,11 @@ fi
 %{_libdir}/*.la
 
 %changelog
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- Revision 2 (Hagedorn@uni-koeln.de)
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
 * Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
 - SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
   koeln.de)
