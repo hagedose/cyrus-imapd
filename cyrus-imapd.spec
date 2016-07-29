@@ -21,6 +21,8 @@
 %global _cyrexecdir %{_exec_prefix}/lib/%{_name}
 
 %global real_version 2.5.9
+%define version 2.5.9
+%define rpmrelease 1.RRZK
 
 ##
 ## Options
@@ -35,8 +37,8 @@
 
 Name:               cyrus-imapd
 Summary:            A high-performance mail server with IMAP, POP3, NNTP and SIEVE support
-Version:            %{real_version}
-Release:            2%{?dist}
+Version:            %{version}
+Release:            %{rpmrelease}%{?dist}
 License:            BSD
 Group:              System Environment/Daemons
 URL:                http://www.cyrusimap.org
@@ -740,6 +742,34 @@ fi
 %{_libdir}/*.la
 
 %changelog
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-1.RRZK
+- ? (Hagedorn@uni-koeln.de)
+- doh (Hagedorn@uni-koeln.de)
+- Revision 2 (Hagedorn@uni-koeln.de)
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- ? (Hagedorn@uni-koeln.de)
+- doh (Hagedorn@uni-koeln.de)
+- Revision 2 (Hagedorn@uni-koeln.de)
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- ? (Hagedorn@uni-koeln.de)
+- doh (Hagedorn@uni-koeln.de)
+- Revision 2 (Hagedorn@uni-koeln.de)
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- ? (Hagedorn@uni-koeln.de)
+- doh (Hagedorn@uni-koeln.de)
+- Revision 2 (Hagedorn@uni-koeln.de)
+- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
+  koeln.de)
+
 * Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
 - doh (Hagedorn@uni-koeln.de)
 - Revision 2 (Hagedorn@uni-koeln.de)
