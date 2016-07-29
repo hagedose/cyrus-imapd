@@ -740,6 +740,9 @@ fi
 %{_libdir}/*.la
 
 %changelog
+* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-1
+- new package built with tito
+
 * Fri Jul 29 2016 Unknown name 2.5.9-1
 - new package built with tito
 
