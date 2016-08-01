@@ -22,7 +22,7 @@
 
 %global real_version 2.5.9
 %define version 2.5.9
-%define rpmrelease 1.RRZK
+%define rpmrelease 1
 
 ##
 ## Options
@@ -32,8 +32,9 @@
 %global with_mysql      0
 %global with_pgsql      0
 
-%global with_dav        0
 %global with_tcpwrap    0
+
+%global rrzk		1
 
 Name:               cyrus-imapd
 Summary:            A high-performance mail server with IMAP, POP3, NNTP and SIEVE support
@@ -114,7 +115,7 @@ BuildRequires:      jansson-devel
 %endif
 BuildRequires:      krb5-devel
 
-%if 0%{?with_dav}
+%if 0%{?rrzk}
 BuildRequires:      libical-devel
 %endif
 
@@ -147,7 +148,7 @@ BuildRequires:      pkgconfig
 BuildRequires:      postgresql-devel
 %endif
 
-%if 0%{?with_dav}
+%if 0%{?rrzk}
 BuildRequires:      sqlite-devel
 %endif
 
@@ -275,7 +276,7 @@ autoreconf -vi || (libtoolize --force && autoreconf -vi)
 %{__sed} -i -e 's|\([^-]\)master|\1cyrus-master|g;s|^master|cyrus-master|g;s|Master|Cyrus-master|g;s|MASTER|CYRUS-MASTER|g' \
         man/master.8 doc/man.html
 
-%if 0%{?with_dav}
+%if 0%{?rrzk}
 # Modify docs httpd --> cyrus-httpd
 %{__perl} -pi -e "s@httpd\(8\)@cyrus-httpd(8)@" man/*5 man/*8 lib/imapoptions
 %{__sed} -i -e 's|\([^-]\)httpd|\1cyrus-httpd|g;s|^httpd|cyrus-httpd|g;s|Httpd|Cyrus-httpd|g;s|HTTPD|CYRUS-HTTPD|g' \
@@ -322,13 +323,7 @@ LDFLAGS="$LDFLAGS -pie"; export LDFLAGS
     --without-bdb \
 %endif
     --with-cyrus-prefix=%{_cyrexecdir} \
-    --with-extraident="Kolab-%{version}-%{release}" \
-%if 0%{?with_tcpwrap} < 1
-    --without-wrap \
-%endif
-%if 0%{?with_dav}
-    --with-http \
-%endif
+    --with-extraident="RRZK-%{version}-%{release}" \
     --with-krbimpl=mit \
     --with-ldap=/usr \
 %if 0%{?with_mysql}
@@ -340,9 +335,16 @@ LDFLAGS="$LDFLAGS -pie"; export LDFLAGS
 %if 0%{?with_pgsql}
     --with-pgsql=%{_includedir} \
 %endif
+%if 0%{?rrzk}
+    --build=x86_64-redhat-linux-gnu \
+    --host=x86_64-redhat-linux-gnu \
+    --target=x86_64-redhat-linux-gnu \
+    --without-snmp \
+    --enable-http \
+    --with-syslogfacility=LOCAL6 \
+    --disable-static \
+%endif
     --with-service-path=%{_cyrexecdir} \
-    --with-snmp \
-    --with-syslogfacility=MAIL
 
 %{__make} %{?_smp_mflags}
 
@@ -404,7 +406,6 @@ done
 find doc perl -name CVS -type d | xargs -r %{__rm} -rf
 find doc perl -name .cvsignore -type f | xargs -r %{__rm} -f
 %{__rm} -f doc/Makefile.dist*
-%{__rm} -f doc/text/htmlstrip.c
 %{__rm} -f doc/text/Makefile
 %{__rm} -rf doc/man
 
@@ -432,7 +433,7 @@ touch %{buildroot}%{ssl_pem_file}
 %{__mv} -f %{buildroot}%{_mandir}/man8/master.8     %{buildroot}%{_mandir}/man8/cyrus-master.8
 
 # Rename 'httpd' binary and manpage to avoid clash with apache httpd
-%if 0%{?with_dav}
+%if 0%{?rrzk}
 %{__mv} -f %{buildroot}%{_cyrexecdir}/httpd         %{buildroot}%{_cyrexecdir}/cyrus-httpd
 %{__mv} -f %{buildroot}%{_mandir}/man8/httpd.8      %{buildroot}%{_mandir}/man8/cyrus-httpd.8
 %endif
@@ -457,6 +458,7 @@ done
 %{__rm} -f %{buildroot}%{_cyrexecdir}/config2header*
 %{__rm} -f %{buildroot}%{_cyrexecdir}/config2man
 %{__rm} -f %{buildroot}%{_cyrexecdir}/pop3proxyd
+%{__rm} -f %{buildroot}%{_cyrexecdir}/htmlstrip.c
 find %{buildroot} -type f -name "perllocal.pod" -exec %{__rm} -vf {} \;
 find %{buildroot} -type f -name ".packlist" -exec %{__rm} -vf {} \;
 find %{buildroot} -type f -name ".gitignore" -exec %{__rm} -vf {} \;
@@ -633,8 +635,10 @@ fi
 %{_cyrexecdir}/cyr_synclog
 %{_cyrexecdir}/cyr_userseen
 %{_cyrexecdir}/cyrdump
-%if 0%{?with_dav}
+%if 0%{?rrzk}
 %{_cyrexecdir}/cyrus-httpd
+%{_cyrexecdir}/dav_reconstruct
+%{_cyrexecdir}/ctl_zoneinfo
 %endif
 %{_cyrexecdir}/cyrus-master
 %{_cyrexecdir}/deliver
@@ -750,38 +754,7 @@ fi
   koeln.de)
 
 * Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
-- ? (Hagedorn@uni-koeln.de)
-- doh (Hagedorn@uni-koeln.de)
 - Revision 2 (Hagedorn@uni-koeln.de)
-- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
-  koeln.de)
-
-* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
-- ? (Hagedorn@uni-koeln.de)
-- doh (Hagedorn@uni-koeln.de)
-- Revision 2 (Hagedorn@uni-koeln.de)
-- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
-  koeln.de)
-
-* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
-- ? (Hagedorn@uni-koeln.de)
-- doh (Hagedorn@uni-koeln.de)
-- Revision 2 (Hagedorn@uni-koeln.de)
-- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
-  koeln.de)
-
-* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
-- doh (Hagedorn@uni-koeln.de)
-- Revision 2 (Hagedorn@uni-koeln.de)
-- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
-  koeln.de)
-
-* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
-- Revision 2 (Hagedorn@uni-koeln.de)
-- SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
-  koeln.de)
-
-* Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
 - SOURCES (apparently) need to be in root directory for tito (Hagedorn@uni-
   koeln.de)
 
