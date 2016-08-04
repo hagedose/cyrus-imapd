@@ -747,6 +747,14 @@ fi
 %{_libdir}/*.la
 
 %changelog
+* Thu Aug 04 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-4
+- Versioning for tito (Hagedorn@uni-koeln.de)
+- Commented out old Sources (Hagedorn@uni-koeln.de)
+- Typo in spec file (Hagedorn@uni-koeln.de)
+- Fix for tito problems (Hagedorn@uni-koeln.de)
+- Next attempt (Hagedorn@uni-koeln.de)
+- Another attempt to satisfy tito (Hagedorn@uni-koeln.de)
+
 * Thu Aug 04 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-1
 - 
 
