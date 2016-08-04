@@ -22,7 +22,7 @@
 
 %global real_version 2.5.9
 %define version 2.5.9
-%define rpmrelease 3
+%define rpmrelease 4
 
 ##
 ## Options
@@ -39,8 +39,7 @@
 Name:               cyrus-imapd
 Summary:            A high-performance mail server with IMAP, POP3, NNTP and SIEVE support
 Version:            %{version}
-#Release:            %{rpmrelease}%{?dist}
-Release:            1
+Release:            %{rpmrelease}%{?dist}
 License:            BSD
 Group:              System Environment/Daemons
 URL:                http://www.cyrusimap.org
