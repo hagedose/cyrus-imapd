@@ -74,7 +74,7 @@ BuildRoot:          %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXX
 ##
 ## Build Requirements
 ##
-BuildRequires:      autoconf
+BuildRequires:      autoconf268
 BuildRequires:      automake
 BuildRequires:      bison
 BuildRequires:      cyrus-sasl-devel
