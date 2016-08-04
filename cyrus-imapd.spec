@@ -375,7 +375,8 @@ done
 
 # Install additional files
 %{__install} -p -m 644 master/conf/prefork.conf %{buildroot}%{_sysconfdir}/cyrus.conf
-%{__install} -p -m 644 SOURCES/%{SOURCE1}    %{buildroot}%{_sysconfdir}/imapd.conf
+#%{__install} -p -m 644 %{SOURCE1}    %{buildroot}%{_sysconfdir}/imapd.conf
+%{__install} -p -m 644 SOURCES/cyrus-imapd.imap-2.3.x-conf    %{buildroot}%{_sysconfdir}/imapd.conf
 %{__install} -p -m 755 %{SOURCE2}   %{buildroot}%{_cyrexecdir}/cvt_cyrusdb_all
 %{__install} -p -m 644 %{SOURCE3}   %{buildroot}%{_var}/lib/imap/rpm/magic
 %{__install} -p -m 644 %{SOURCE11}    %{buildroot}%{_sysconfdir}/logrotate.d/%{_name}
