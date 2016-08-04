@@ -48,22 +48,22 @@ URL:                http://www.cyrusimap.org
 # Upstream sources
 # From e9195f39150b553a4f62b891f61193cf1b199fc3
 Source0:            ftp://ftp.andrew.cmu.edu/pub/cyrus/%{_name}-%{real_version}.tar.gz
-Source1:            cyrus-imapd.imap-2.3.x-conf
-Source2:            cyrus-imapd.cvt_cyrusdb_all
-Source3:            cyrus-imapd.magic
-
+#Source1:            cyrus-imapd.imap-2.3.x-conf
+#Source2:            cyrus-imapd.cvt_cyrusdb_all
+#Source3:            cyrus-imapd.magic
+#
 # Distribution specific sources
-Source11:           cyrus-imapd.logrotate
-Source12:           cyrus-imapd.pam-config
-Source13:           cyrus-imapd.cron-daily
+#Source11:           cyrus-imapd.logrotate
+#Source12:           cyrus-imapd.pam-config
+#Source13:           cyrus-imapd.cron-daily
 
 # SysVinit
-Source21:           cyrus-imapd.init
-Source22:           cyrus-imapd.sysconfig
+#Source21:           cyrus-imapd.init
+#Source22:           cyrus-imapd.sysconfig
 
 # Systemd support
-Source31:           cyrus-imapd.service
-Source32:           cyr_systemd_helper
+#Source31:           cyrus-imapd.service
+#Source32:           cyr_systemd_helper
 
 ##
 ## Patches
