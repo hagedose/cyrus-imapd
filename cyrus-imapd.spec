@@ -377,31 +377,31 @@ done
 %{__install} -p -m 644 master/conf/prefork.conf %{buildroot}%{_sysconfdir}/cyrus.conf
 #%{__install} -p -m 644 %{SOURCE1}    %{buildroot}%{_sysconfdir}/imapd.conf
 %{__install} -p -m 644 SOURCES/cyrus-imapd.imap-2.3.x-conf    %{buildroot}%{_sysconfdir}/imapd.conf
-%{__install} -p -m 755 %{SOURCE2}   %{buildroot}%{_cyrexecdir}/cvt_cyrusdb_all
-%{__install} -p -m 644 %{SOURCE3}   %{buildroot}%{_var}/lib/imap/rpm/magic
-%{__install} -p -m 644 %{SOURCE11}    %{buildroot}%{_sysconfdir}/logrotate.d/%{_name}
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/pop
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/imap
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/sieve
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/mupdate
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/lmtp
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/nntp
-%{__install} -p -m 644 %{SOURCE12}    %{buildroot}%{_sysconfdir}/pam.d/csync
-%{__install} -p -m 755 %{SOURCE13}   %{buildroot}%{_sysconfdir}/cron.daily/%{_name}
+%{__install} -p -m 755 SOURCES/cyrus-imapd.cvt_cyrusdb_all   %{buildroot}%{_cyrexecdir}/cvt_cyrusdb_all
+%{__install} -p -m 644 SOURCES/cyrus-imapd.magic   %{buildroot}%{_var}/lib/imap/rpm/magic
+%{__install} -p -m 644 SOURCES/cyrus-imapd.logrotate    %{buildroot}%{_sysconfdir}/logrotate.d/%{_name}
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/pop
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/imap
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/sieve
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/mupdate
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/lmtp
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/nntp
+%{__install} -p -m 644 SOURCES/cyrus-imapd.pam-config    %{buildroot}%{_sysconfdir}/pam.d/csync
+%{__install} -p -m 755 SOURCES/cyrus-imapd.cron-daily   %{buildroot}%{_sysconfdir}/cron.daily/%{_name}
 %if 0%{?suse_version}
 %{__install} -d %{buildroot}%{_localstatedir}/adm/fillup-templates/
-%{__install} -p -m 644 %{SOURCE22}   %{buildroot}%{_localstatedir}/adm/fillup-templates/sysconfig.%{_name}
+%{__install} -p -m 644 SOURCEScyrus-imapd.sysconfig   %{buildroot}%{_localstatedir}/adm/fillup-templates/sysconfig.%{_name}
 %else
 %{__install} -d %{buildroot}%{_sysconfdir}/sysconfig/
-%{__install} -p -m 644 %{SOURCE22}   %{buildroot}%{_sysconfdir}/sysconfig/%{_name}
+%{__install} -p -m 644 SOURCEScyrus-imapd.sysconfig   %{buildroot}%{_sysconfdir}/sysconfig/%{_name}
 %endif
 
 %if 0%{?with_systemd}
-%{__install} -p -D -m 644 %{SOURCE31}   %{buildroot}%{_unitdir}/cyrus-imapd.service
-%{__install} -p -D -m 755 %{SOURCE32}   %{buildroot}%{_cyrexecdir}/cyr_systemd_helper
+%{__install} -p -D -m 644 SOURCES/cyrus-imapd.service   %{buildroot}%{_unitdir}/cyrus-imapd.service
+%{__install} -p -D -m 755 SOURCES/cyr_systemd_helper   %{buildroot}%{_cyrexecdir}/cyr_systemd_helper
 %else
 %{__install} -d %{buildroot}%{_sysconfdir}/rc.d/init.d
-%{__install} -p -m 755 %{SOURCE21}   %{buildroot}%{_sysconfdir}/rc.d/init.d/%{_name}
+%{__install} -p -m 755 SOURCES/cyrus-imapd.init   %{buildroot}%{_sysconfdir}/rc.d/init.d/%{_name}
 %endif
 
 # Cleanup of doc dir
