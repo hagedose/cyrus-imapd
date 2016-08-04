@@ -390,10 +390,10 @@ done
 %{__install} -p -m 755 SOURCES/cyrus-imapd.cron-daily   %{buildroot}%{_sysconfdir}/cron.daily/%{_name}
 %if 0%{?suse_version}
 %{__install} -d %{buildroot}%{_localstatedir}/adm/fillup-templates/
-%{__install} -p -m 644 SOURCEScyrus-imapd.sysconfig   %{buildroot}%{_localstatedir}/adm/fillup-templates/sysconfig.%{_name}
+%{__install} -p -m 644 SOURCES/cyrus-imapd.sysconfig   %{buildroot}%{_localstatedir}/adm/fillup-templates/sysconfig.%{_name}
 %else
 %{__install} -d %{buildroot}%{_sysconfdir}/sysconfig/
-%{__install} -p -m 644 SOURCEScyrus-imapd.sysconfig   %{buildroot}%{_sysconfdir}/sysconfig/%{_name}
+%{__install} -p -m 644 SOURCES/cyrus-imapd.sysconfig   %{buildroot}%{_sysconfdir}/sysconfig/%{_name}
 %endif
 
 %if 0%{?with_systemd}
