@@ -39,7 +39,8 @@
 Name:               cyrus-imapd
 Summary:            A high-performance mail server with IMAP, POP3, NNTP and SIEVE support
 Version:            %{version}
-Release:            %{rpmrelease}%{?dist}
+#Release:            %{rpmrelease}%{?dist}
+Release:            1
 License:            BSD
 Group:              System Environment/Daemons
 URL:                http://www.cyrusimap.org
@@ -746,6 +747,18 @@ fi
 %{_libdir}/*.la
 
 %changelog
+* Thu Aug 04 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-1
+- 
+
+* Mon Aug 01 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- SPEC file for RRZK (Hagedorn@uni-koeln.de)
+
+* Mon Aug 01 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- SPEC file for RRZK (Hagedorn@uni-koeln.de)
+
+* Mon Aug 01 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de>
+- SPEC file for RRZK (Hagedorn@uni-koeln.de)
+
 * Fri Jul 29 2016 Sebastian Hagedorn <Hagedorn@uni-koeln.de> 2.5.9-1.RRZK
 - ? (Hagedorn@uni-koeln.de)
 - doh (Hagedorn@uni-koeln.de)
